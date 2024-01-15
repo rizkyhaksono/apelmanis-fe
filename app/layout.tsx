@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
-import { fontSans } from "@/config/fonts";
+import { Analytics } from "@vercel/analytics/react";
 import { fontPoppins } from "@/config/fonts";
 import { Providers } from "./providers";
 import { Navbar } from "@/components/navbar";
@@ -37,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="relative flex flex-col h-screen">
             <Navbar />
             <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">{children}</main>
+            <Analytics />
             <footer className="w-full flex items-center justify-center py-3">
               <Link isExternal className="flex items-center gap-1 text-current" href="https://github.com/rizkyhaksono" title="rizkyhaksono">
                 <p className="text-sm">Build by Rizky Haksono</p>
