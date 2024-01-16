@@ -5,6 +5,10 @@ export const siteConfig = {
 	description: "Kost Kota Madiun Strategis dan Bersih",
 	navItems: [
     {
+      label: "Home",
+      href: "/",
+    },
+    {
       label: "About",
       href: "/about",
     },
@@ -18,6 +22,10 @@ export const siteConfig = {
     }
 	],
 	navMenuItems: [
+    {
+      label: "Home",
+      href: "/",
+    },
     {
       label: "About",
       href: "/about",
