@@ -4,10 +4,6 @@ export const siteConfig = {
 	name: "Apel Manis Kost",
 	description: "Kost Kota Madiun Strategis dan Bersih",
 	navItems: [
-		{
-			label: "Home",
-			href: "/",
-		},
     {
       label: "About",
       href: "/about",
@@ -22,10 +18,6 @@ export const siteConfig = {
     }
 	],
 	navMenuItems: [
-		{
-			label: "Home",
-			href: "/",
-		},
     {
       label: "About",
       href: "/about",
@@ -43,4 +35,24 @@ export const siteConfig = {
 		github: "https://github.com/rizkyhaksono",
 		twitter: "https://twitter.com/rizkyhaksono"
 	},
+  greeting: [
+    "Bonjour",
+    "Hola",
+    "Zdravstvuyte",
+    "Nǐn hǎo",
+    "Salve",
+    "Konnichiwa",
+    "Guten Tag",
+    "Olá",
+    "Anyoung haseyo",
+    "Asalaamalaikum",
+    "Goddag",
+    "Shikamoo",
+    "Goedendag",
+    "Yassas",
+    "Dzień dobry",
+    "Selamat siang",
+    "Namaste, Namaskar",
+    "God dag"
+  ]
 };
