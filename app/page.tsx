@@ -1,19 +1,38 @@
+"use client";
+
 import { Link } from "@nextui-org/link";
 import { Snippet } from "@nextui-org/snippet";
 import { Code } from "@nextui-org/code";
 import { button as buttonStyles } from "@nextui-org/theme";
-import { title, subtitle } from "@/components/primitives";
+import { title } from "@/components/primitives";
 import { PhoneIcon } from "@/components/icons";
+import Typed from "typed.js";
+import { useEffect, useRef } from "react";
 import MarqueeComponent from "@/components/marquee";
 
 export default function Home() {
+  const el = useRef(null);
+
+  useEffect(() => {
+    const typed = new Typed(el.current, {
+      loop: true,
+      strings: ["Pilihan Kost Putra", "Terbaik!"],
+      typeSpeed: 90,
+    });
+
+    return () => {
+      typed.destroy();
+    };
+  }, []);
+
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
       <div className="inline-block max-w-lg text-center justify-center">
         <h1 className={title()}>Apel Manis&nbsp;</h1>
         <h1 className={title({ color: "violet" })}>Kost&nbsp;</h1>
-        <br />
-        <h2 className={subtitle({ class: "mt-4" })}>Pilihan Kost Putra Terbaik</h2>
+        <div className="flex items-center justify-center text-center mt-5">
+          <h2 className="text-lg lg:text-xl text-default-600" ref={el} />
+        </div>
       </div>
 
       <div className="flex gap-3">

@@ -37,6 +37,7 @@
     "react-dom": "18.2.0",
     "react-fast-marquee": "^1.6.2",
     "tailwind-variants": "^0.1.18",
+    "typed.js": "^2.1.0",
     "typescript": "5.0.4"
   },
   "devDependencies": {
