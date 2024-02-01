@@ -2,44 +2,49 @@
 
 import React from "react";
 import { title } from "@/components/primitives";
-import {} from "@nextui-org/react";
-import { button as buttonStyles } from "@nextui-org/theme";
-import { Card, CardHeader, CardBody, CardFooter, Divider, Link, Image, Input, Textarea } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, CardFooter, Divider, Link, Image, Input, Textarea, Button } from "@nextui-org/react";
 
 export default function ContactPage() {
   return (
-    <div>
-      <h1 className={title()}>Contact</h1>
+    <>
+      <h1 className={title({ color: "blue" })}>Contact</h1>
 
-      <div className="flex flex-row gap-10 mt-10 w-full">
-        <Card className="max-w-[400px]">
-          <CardHeader className="flex gap-3">
-            <Image alt="WA Logo" height={40} radius="sm" src="https://cdn.pixabay.com/photo/2021/05/22/11/38/whatsapp-6273368_1280.png" width={40} />
-            <div className="flex flex-col">
-              <p className="text-small text-default-500">Apel Manis</p>
+      <Card fullWidth className="mt-10">
+        <CardHeader className="gap-3">
+          <div className="grid xl:grid-cols-2 lg:grid-cols-1 gap-3">
+            <div className="flex items-center gap-3">
+              <Image alt="nextui logo" height={40} radius="sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/100px-Gmail_icon_%282020%29.svg.png" width={40} />
+              <a href="mailto:novitalencanawati10@gmail.com" target="_blank">
+                <p className="text-md text-start">Email</p>
+                <p className="text-small text-default-500">novitalencanawati10@gmail.com</p>
+              </a>
             </div>
-          </CardHeader>
-          <Divider />
-          <CardBody>
-            <p>Make beautiful websites regardless of your design experience.</p>
-          </CardBody>
-          <Divider />
-          <CardFooter>
-            <Link isExternal showAnchorIcon href="https://wa.me/08973889299?text=Saya%20tertarik%20dengan%20kost%20apel%20manis">
-              Personal contact.
-            </Link>
-          </CardFooter>
-        </Card>
 
-        <div className="flex flex-col w-full xl:w-96 lg:w-96 md:w-96 sm:w-96">
-          <Input className="mt-10" type="email" label="Email" placeholder="Enter your email" />
-          <Input className="mt-5" type="text" label="Username" placeholder="Enter your username" />
-          <Textarea className="mt-5 mb-5" label="Description" placeholder="Enter your description" />
-          <button type="submit" className={buttonStyles({ color: "default", radius: "full", variant: "ghost", fullWidth: true })}>
-            Submit
-          </button>
-        </div>
+            <div className="flex items-center gap-3">
+              <Image alt="nextui logo" height={40} radius="sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/2048px-Instagram_logo_2022.svg.png" width={40} />
+              <a href="https://instagram.com/novita_lencanawati" target="_blank">
+                <p className="text-md text-start">Instagram</p>
+                <p className="text-small text-default-500">@novita_lencanawati</p>
+              </a>
+            </div>
+          </div>
+        </CardHeader>
+        <Divider />
+        <CardBody>
+          <p>Feel free to connect.</p>
+        </CardBody>
+      </Card>
+
+      <div className="flex w-full flex-wrap md:flex-nowrap gap-4 mt-3">
+        <Input fullWidth type="text" label="Name" size="lg" placeholder="Enter you name" />
+        <Input fullWidth type="email" label="Email" placeholder="Enter your email" size="lg" />
       </div>
-    </div>
+
+      <Textarea fullWidth label="Description" placeholder="Enter your description" className="mt-3" />
+
+      <Button color="default" fullWidth className="mt-3">
+        Submit
+      </Button>
+    </>
   );
 }
