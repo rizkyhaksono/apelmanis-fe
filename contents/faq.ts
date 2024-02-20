@@ -18,7 +18,7 @@ export const faqConfig = [
     answer: "Anda bisa meng-DP sesuai kesepakatan awal."
   },
   {
-    question: "Kapan Kost akan nuka?",
+    question: "Kapan Kost akan buka?",
     answer: "Kost dalam tahap pengerjaan, jadi ditunggu dulu sampai bangunan selesai."
   }
 ]

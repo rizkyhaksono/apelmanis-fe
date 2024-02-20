@@ -11,9 +11,9 @@ export default function FacilitiesPage() {
       <h2 className="mt-10 mb-2 text-lg font-semibold text-foreground">Fasilitas umum yang ada di Kost:</h2>
       <ul>
         {facilitiesConfig.fasilitas.map((items) => (
-          <li key={items} className="flex items-center gap-3">
-            <FaRegCircleCheck />
-            {items}
+          <li key={items} className="flex items-start space-x-3 text-gray-500 list-inside dark:text-gray-400 my-1">
+            <FaRegCircleCheck className="flex-shrink-0 h-4 w-4 mt-1" />
+            <p className="text-start">{items}</p>
           </li>
         ))}
       </ul>
@@ -21,19 +21,19 @@ export default function FacilitiesPage() {
       <h2 className="mt-10 mb-2 text-lg font-semibold text-foreground">Fasilitas kamar mandi yang ada di Kost:</h2>
       <ul>
         {facilitiesConfig.fasilitasKamarMandi.map((items) => (
-          <li key={items} className="flex items-center gap-3">
-            <FaRegCircleCheck />
-            {items}
+          <li key={items} className="flex items-start space-x-3 text-gray-500 list-inside dark:text-gray-400 my-1">
+            <FaRegCircleCheck className="flex-shrink-0 h-4 w-4 mt-1" />
+            <p className="text-start">{items}</p>
           </li>
         ))}
       </ul>
 
       <h2 className="mt-10 mb-2 text-lg font-semibold text-foreground">Spesifikasi yang ada di Kost:</h2>
-      <ul>
+      <ul className="mb-10">
         {facilitiesConfig.spesifikasi.map((items) => (
-          <li key={items} className="flex items-center gap-3">
-            <FaRegCircleCheck />
-            {items}
+          <li key={items} className="flex items-start space-x-3 text-gray-500 list-inside dark:text-gray-400 my-1">
+            <FaRegCircleCheck className="flex-shrink-0 h-4 w-4 mt-1" />
+            <p className="text-start">{items}</p>
           </li>
         ))}
       </ul>
@@ -41,8 +41,8 @@ export default function FacilitiesPage() {
       <h2 className="mt-10 mb-2 text-lg font-semibold text-foreground">Peraturan yang ada di Kost:</h2>
       <ul className="mb-10">
         {facilitiesConfig.peraturan.map((items) => (
-          <li key={items} className="flex gap-3">
-            <FaRegCircleCheck />
+          <li key={items} className="flex items-start space-x-3 text-gray-500 list-inside dark:text-gray-400 my-1">
+            <FaRegCircleCheck className="flex-shrink-0 h-4 w-4 mt-1" />
             <p className="text-start">{items}</p>
           </li>
         ))}
