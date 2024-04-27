@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
-import { Accordion, AccordionItem } from "@nextui-org/react";
-import { faqConfig } from "@/contents/faq";
-import { title } from "@/components/primitives";
+import { Accordion, AccordionItem } from "@nextui-org/react"
+import { faqConfig } from "@/contents/faq"
+import { title } from "@/components/primitives"
 
 export default function FAQPage() {
   return (
@@ -11,11 +11,11 @@ export default function FAQPage() {
 
       <Accordion fullWidth variant="splitted" defaultExpandedKeys={["0"]} className="text-start w-full mt-10">
         {faqConfig.map((item, index) => (
-          <AccordionItem key={index} aria-label={`Accordion ${index + 1}`} title={item.question}>
+          <AccordionItem key={item.question} aria-label={`Accordion ${index + 1}`} title={item.question}>
             <p className="text-foreground">{item.answer}</p>
           </AccordionItem>
         ))}
       </Accordion>
     </>
-  );
+  )
 }

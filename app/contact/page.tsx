@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
-import React from "react";
-import { title } from "@/components/primitives";
-import { Card, CardHeader, CardBody, CardFooter, Divider, Link, Image, Input, Textarea, Button } from "@nextui-org/react";
+import React from "react"
+import { title } from "@/components/primitives"
+import { Card, CardHeader, CardBody, Divider, Image, Input, Textarea, Button } from "@nextui-org/react"
 
 export default function ContactPage() {
   return (
@@ -31,7 +31,7 @@ export default function ContactPage() {
         </CardHeader>
         <Divider />
         <CardBody>
-          <p>Feel free to connect.</p>
+          <p>Feel free to contact.</p>
         </CardBody>
       </Card>
 
@@ -46,5 +46,5 @@ export default function ContactPage() {
         Submit
       </Button>
     </>
-  );
+  )
 }

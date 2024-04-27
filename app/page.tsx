@@ -1,27 +1,30 @@
-"use client";
+"use client"
 
-import { Link } from "@nextui-org/link";
-import { button as buttonStyles } from "@nextui-org/theme";
-import { title } from "@/components/primitives";
-import { PhoneIcon } from "@/components/icons";
-import Typed from "typed.js";
-import { useEffect, useRef } from "react";
-import MarqueeComponent from "@/components/marquee";
+import { Link } from "@nextui-org/link"
+import { button as buttonStyles } from "@nextui-org/theme"
+import { subtitle, title } from "@/components/primitives"
+import { PhoneIcon } from "@/components/icons"
+import Typed from "typed.js"
+import { useEffect, useRef } from "react"
+import MarqueeComponent from "@/components/marquee"
+import dynamic from "next/dynamic"
+
+const LazyMap = dynamic(() => import("@/components/map-radius"), { ssr: false, loading: () => <p>Loading...</p> })
 
 export default function Home() {
-  const el = useRef(null);
+  const el = useRef(null)
 
   useEffect(() => {
     const typed = new Typed(el.current, {
       loop: true,
       strings: ["Pilihan Kost Putra", "Terbaik!"],
       typeSpeed: 90,
-    });
+    })
 
     return () => {
-      typed.destroy();
-    };
-  }, []);
+      typed.destroy()
+    }
+  }, [])
 
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
@@ -48,11 +51,15 @@ export default function Home() {
 
         <div className="mt-20">
           <h1 className={title({ color: "blue" })} style={{ marginTop: 20, paddingTop: 20 }}>
-            Location
+            Locations
           </h1>
         </div>
 
+        <h1 className={subtitle({ color: "blue", className: "font-semibold" })} style={{ marginTop: 20, paddingTop: 20 }}>
+          Google Maps
+        </h1>
         <iframe
+          title="Apel Manis Location"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.379296664746!2d111.53595727574817!3d-7.642297375596943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e79bfb6d777b62f%3A0xe568a382b1b226f4!2sKos%20Putra%20Apel%20Manis!5e0!3m2!1sen!2sid!4v1705385260979!5m2!1sen!2sid"
           width="100%"
           height="800"
@@ -60,8 +67,13 @@ export default function Home() {
           allowFullScreen={true}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
+        />
+
+        <h1 className={subtitle({ color: "blue", className: "font-semibold" })} style={{ marginTop: 20, paddingTop: 20 }}>
+          Jarak antar lokasi
+        </h1>
+        <LazyMap />
       </div>
     </section>
-  );
+  )
 }

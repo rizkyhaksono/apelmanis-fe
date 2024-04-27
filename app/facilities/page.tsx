@@ -1,13 +1,12 @@
-import { title } from "@/components/primitives";
-import { Image, Card, CardFooter } from "@nextui-org/react";
-import { facilitiesConfig } from "@/contents/facilities";
-import { FaRegCircleCheck } from "react-icons/fa6";
+import { title } from "@/components/primitives"
+import { Image, Card, CardFooter } from "@nextui-org/react"
+import { facilitiesConfig } from "@/contents/facilities"
+import { FaRegCircleCheck } from "react-icons/fa6"
 
 export default function FacilitiesPage() {
   return (
     <>
       <h1 className={title({ color: "blue", class: "block" })}>Facilities</h1>
-
       <h2 className="mt-10 mb-2 text-lg font-semibold text-foreground">Fasilitas umum yang ada di Kost:</h2>
       <ul>
         {facilitiesConfig.fasilitas.map((items) => (
@@ -58,5 +57,5 @@ export default function FacilitiesPage() {
         </Card>
       </div>
     </>
-  );
+  )
 }

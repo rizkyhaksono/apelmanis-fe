@@ -1,12 +1,12 @@
-import "@/styles/globals.css";
-import { Metadata } from "next";
-import { siteConfig } from "@/config/site";
-import { Analytics } from "@vercel/analytics/react";
-import { fontPoppins } from "@/config/fonts";
-import { Providers } from "./providers";
-import { Navbar } from "@/components/navbar";
-import { Link } from "@nextui-org/link";
-import clsx from "clsx";
+import "@/styles/globals.css"
+import { Metadata } from "next"
+import { siteConfig } from "@/config/site"
+import { Analytics } from "@vercel/analytics/react"
+import { fontPoppins } from "@/config/fonts"
+import { Providers } from "./providers"
+import { Navbar } from "@/components/navbar"
+import { Link } from "@nextui-org/link"
+import clsx from "clsx"
 
 export const metadata: Metadata = {
   title: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
-};
+}
 
 export const viewport = {
   themeColor: [
@@ -26,9 +26,9 @@ export const viewport = {
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
-};
+}
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
@@ -47,5 +47,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Providers>
       </body>
     </html>
-  );
+  )
 }
