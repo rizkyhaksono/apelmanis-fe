@@ -11,14 +11,34 @@ export const faqConfig = [
   },
   {
     question: "Apakah ada nomor yang dapat dihubungi?",
-    answer: "Anda bisa menghubungi nomor berikut: 08973889299."
+    answer: "Anda bisa menghubungi nomor berikut: 081337283023."
   },
   {
     question: "Apakah bisa bayar DP di Kost Ini?",
     answer: "Anda bisa meng-DP sesuai kesepakatan awal."
   },
   {
-    question: "Kapan Kost akan buka?",
-    answer: "Kost dalam tahap pengerjaan, jadi ditunggu dulu sampai bangunan selesai."
-  }
+    question: "Apakah bisa bayar bulanan di Kost Ini?",
+    answer: "Anda bisa membayar bulanan sesuai kesepakatan awal."
+  },
+  {
+    question: "Apakah ada fasilitas wifi?",
+    answer: "Ada, memakai wifi biznet."
+  },
+  {
+    question: "Apakah ada fasilitas parkir?",
+    answer: "Ada, dengan parkir yang luas."
+  },
+  {
+    question: "Apakah ada fasilitas dapur?",
+    answer: "Ada, dengan fasilitas lengkap."
+  },
+  {
+    question: "Apakah ada fasilitas kamar mandi dalam?",
+    answer: "Ada, dengan fasilitas lengkap."
+  },
+  {
+    question: "Apakah ada fasilitas AC?",
+    answer: "Ada, dengan biaya tambahan."
+  },
 ]

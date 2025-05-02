@@ -8,7 +8,6 @@ export default function FAQPage() {
   return (
     <>
       <h1 className={title({ color: "blue" })}>FAQ</h1>
-
       <Accordion fullWidth variant="splitted" defaultExpandedKeys={["0"]} className="text-start w-full mt-10">
         {faqConfig.map((item, index) => (
           <AccordionItem key={item.question} aria-label={`Accordion ${index + 1}`} title={item.question}>

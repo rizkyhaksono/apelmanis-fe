@@ -7,6 +7,7 @@ import { PhoneIcon } from "@/components/icons"
 import Typed from "typed.js"
 import { useEffect, useRef } from "react"
 import MarqueeComponent from "@/components/marquee"
+import PreviewFacilities from "@/components/preview-facilities"
 import dynamic from "next/dynamic"
 
 const LazyMap = dynamic(() => import("@/components/map-radius"), { ssr: false, loading: () => <p>Loading...</p> })
@@ -17,7 +18,15 @@ export default function Home() {
   useEffect(() => {
     const typed = new Typed(el.current, {
       loop: true,
-      strings: ["Pilihan Kost Putra", "Terbaik!"],
+      strings: [
+        "Pilihan Kost Putri",
+        "Terbaik!",
+        "Nyaman",
+        "Bersih",
+        "Dekat Kampus",
+        "Dekat Tempat Makan",
+        "Dekat Tempat Belanja",
+      ],
       typeSpeed: 90,
     })
 
@@ -49,11 +58,13 @@ export default function Home() {
       <div className="mt-10 text-center">
         <MarqueeComponent />
 
-        <div className="mt-20">
-          <h1 className={title({ color: "blue" })} style={{ marginTop: 20, paddingTop: 20 }}>
-            Locations
-          </h1>
+        <div className="my-10">
+          <PreviewFacilities />
         </div>
+
+        <h1 className={title({ color: "blue" })} style={{ marginTop: 20, paddingTop: 20 }}>
+          Locations
+        </h1>
 
         <h1 className={subtitle({ color: "blue", className: "font-semibold" })} style={{ marginTop: 20, paddingTop: 20 }}>
           Google Maps

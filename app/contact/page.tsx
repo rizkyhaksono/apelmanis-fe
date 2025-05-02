@@ -21,10 +21,10 @@ export default function ContactPage() {
             </div>
 
             <div className="flex items-center gap-3">
-              <Image alt="nextui logo" height={40} radius="sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/2048px-Instagram_logo_2022.svg.png" width={40} />
+              <Image alt="nextui logo" height={40} radius="sm" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6FXuyifTCgC_7081q7CsFIgtIi53-bXX6Tw&s" width={40} />
               <a href="https://instagram.com/rizkyhaksonoo" target="_blank">
-                <p className="text-md text-start">Instagram</p>
-                <p className="text-small text-default-500">@rizkyhaksonoo</p>
+                <p className="text-md text-start">Whatsapp</p>
+                <p className="text-small text-default-500">081337283023</p>
               </a>
             </div>
           </div>
