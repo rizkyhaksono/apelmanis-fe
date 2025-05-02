@@ -1,7 +1,7 @@
 import { title } from "@/components/primitives"
 import { Image, Card, CardFooter } from "@nextui-org/react"
 import { facilitiesConfig } from "@/contents/facilities"
-import { FaRegCircleCheck } from "react-icons/fa6"
+import { Check } from "lucide-react";
 
 export default function FacilitiesPage() {
   const images = Array.from({ length: 18 }, (_, i) => `/assets/gambar-${i + 1}.jpeg`);
@@ -13,7 +13,7 @@ export default function FacilitiesPage() {
       <ul>
         {facilitiesConfig.fasilitas.map((items) => (
           <li key={items} className="flex items-start space-x-3 text-gray-500 list-inside dark:text-gray-400 my-1">
-            <FaRegCircleCheck className="flex-shrink-0 h-4 w-4 mt-1" />
+            <Check />
             <p className="text-start">{items}</p>
           </li>
         ))}
@@ -23,7 +23,7 @@ export default function FacilitiesPage() {
       <ul>
         {facilitiesConfig.fasilitasKamarMandi.map((items) => (
           <li key={items} className="flex items-start space-x-3 text-gray-500 list-inside dark:text-gray-400 my-1">
-            <FaRegCircleCheck className="flex-shrink-0 h-4 w-4 mt-1" />
+            <Check />
             <p className="text-start">{items}</p>
           </li>
         ))}
@@ -33,7 +33,7 @@ export default function FacilitiesPage() {
       <ul className="mb-10">
         {facilitiesConfig.peraturan.map((items) => (
           <li key={items} className="flex items-start space-x-3 text-gray-500 list-inside dark:text-gray-400 my-1">
-            <FaRegCircleCheck className="flex-shrink-0 h-4 w-4 mt-1" />
+            <Check />
             <p className="text-start">{items}</p>
           </li>
         ))}

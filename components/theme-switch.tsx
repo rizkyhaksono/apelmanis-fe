@@ -34,9 +34,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className, classNames }) => 
         className: clsx("px-px transition-opacity hover:opacity-80 cursor-pointer", className, classNames?.base),
       })}
     >
-      <VisuallyHidden>
-        <input {...getInputProps()} />
-      </VisuallyHidden>
+      {VisuallyHidden({ children: <input {...getInputProps()} /> })}
       <div
         {...getWrapperProps()}
         className={slots.wrapper({
