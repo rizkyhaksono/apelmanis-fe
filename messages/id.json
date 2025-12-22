@@ -1,0 +1,76 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "faq": "FAQ",
+    "facilities": "Fasilitas",
+    "contact": "Kontak"
+  },
+  "home": {
+    "title": "Apel Manis",
+    "subtitle": "Kost",
+    "taglines": ["Pilihan Kost Putri", "Terbaik!", "Nyaman", "Bersih", "Dekat Kampus", "Dekat Tempat Makan", "Dekat Tempat Belanja"],
+    "facilities_btn": "Fasilitas",
+    "contact_btn": "Kontak",
+    "our_rooms": "Kamar Kami",
+    "rooms_desc": "Kenyamanan dan kebersihan adalah prioritas kami. Lihat fasilitas kamar yang tersedia.",
+    "nearby": "Dekat Kemana-mana!",
+    "nearby_desc": "Lokasi strategis, dekat dengan kampus, tempat makan, dan pusat perbelanjaan.",
+    "locations": "Lokasi",
+    "google_maps": "Google Maps",
+    "distance_map": "Jarak ke Lokasi Penting"
+  },
+  "contact": {
+    "title": "Kontak",
+    "description": "Hubungi kami untuk informasi lebih lanjut tentang ketersediaan kamar dan fasilitas.",
+    "email": "Email",
+    "whatsapp": "WhatsApp",
+    "help_text": "Hubungi kami kapan saja, kami siap membantu Anda!",
+    "send_message": "Kirim Pesan",
+    "name": "Nama",
+    "name_placeholder": "Masukkan nama Anda",
+    "email_placeholder": "Masukkan email Anda",
+    "message": "Pesan",
+    "message_placeholder": "Tulis pesan Anda di sini..."
+  },
+  "facilities": {
+    "title": "Fasilitas",
+    "description": "Nikmati berbagai fasilitas lengkap yang kami sediakan untuk kenyamanan Anda.",
+    "general": "Fasilitas Umum",
+    "general_desc": "Tersedia di setiap kamar",
+    "bathroom": "Kamar Mandi",
+    "bathroom_desc": "Fasilitas kamar mandi dalam",
+    "rules": "Peraturan",
+    "rules_desc": "Harap dipatuhi",
+    "gallery": "Galeri",
+    "gallery_desc": "Klik foto untuk melihat lebih detail."
+  },
+  "faq": {
+    "title": "FAQ",
+    "description": "Pertanyaan yang sering diajukan seputar Kost Apel Manis.",
+    "search": "Cari pertanyaan...",
+    "no_results": "Tidak ada pertanyaan yang cocok dengan"
+  },
+  "common": {
+    "loading": "Memuat...",
+    "back_home": "Kembali ke Beranda",
+    "room": "Kamar",
+    "click_to_view": "Klik untuk melihat",
+    "built_with": "Dibuat dengan",
+    "by": "oleh"
+  },
+  "nearby_places": {
+    "unipma": "Universitas PGRI Madiun",
+    "sma3": "SMA Negeri 3 Madiun",
+    "matahari": "Matahari Dept. Store",
+    "restaurant": "Rumah Makan Padang",
+    "minimarket": "Indomaret & Alfamart",
+    "mosque": "Masjid Agung Madiun"
+  },
+  "themes": {
+    "light": "Terang",
+    "dark": "Gelap",
+    "blue": "Biru",
+    "purple": "Ungu",
+    "green": "Hijau"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "nav": {
+    "home": "Home",
+    "faq": "FAQ",
+    "facilities": "Facilities",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Apel Manis",
+    "subtitle": "Kost",
+    "taglines": ["Best Women's Boarding House", "The Best!", "Comfortable", "Clean", "Near Campus", "Near Restaurants", "Near Shopping"],
+    "facilities_btn": "Facilities",
+    "contact_btn": "Contact",
+    "our_rooms": "Our Rooms",
+    "rooms_desc": "Comfort and cleanliness are our priorities. See our available room facilities.",
+    "nearby": "Close to Everywhere!",
+    "nearby_desc": "Strategic location, close to campus, restaurants, and shopping centers.",
+    "locations": "Locations",
+    "google_maps": "Google Maps",
+    "distance_map": "Distance to Important Places"
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Contact us for more information about room availability and facilities.",
+    "email": "Email",
+    "whatsapp": "WhatsApp",
+    "help_text": "Contact us anytime, we're ready to help you!",
+    "send_message": "Send Message",
+    "name": "Name",
+    "name_placeholder": "Enter your name",
+    "email_placeholder": "Enter your email",
+    "message": "Message",
+    "message_placeholder": "Write your message here..."
+  },
+  "facilities": {
+    "title": "Facilities",
+    "description": "Enjoy various complete facilities we provide for your comfort.",
+    "general": "General Facilities",
+    "general_desc": "Available in every room",
+    "bathroom": "Bathroom",
+    "bathroom_desc": "Private bathroom facilities",
+    "rules": "Rules",
+    "rules_desc": "Please comply",
+    "gallery": "Gallery",
+    "gallery_desc": "Click photo to view details."
+  },
+  "faq": {
+    "title": "FAQ",
+    "description": "Frequently asked questions about Apel Manis Boarding House.",
+    "search": "Search questions...",
+    "no_results": "No questions match"
+  },
+  "common": {
+    "loading": "Loading...",
+    "back_home": "Back to Home",
+    "room": "Room",
+    "click_to_view": "Click to view",
+    "built_with": "Built with",
+    "by": "by"
+  },
+  "nearby_places": {
+    "unipma": "PGRI Madiun University",
+    "sma3": "SMA Negeri 3 Madiun",
+    "matahari": "Matahari Dept. Store",
+    "restaurant": "Padang Restaurant",
+    "minimarket": "Indomaret & Alfamart",
+    "mosque": "Grand Mosque Madiun"
+  },
+  "themes": {
+    "light": "Light",
+    "dark": "Dark",
+    "blue": "Blue",
+    "purple": "Purple",
+    "green": "Green"
+  }
+}
