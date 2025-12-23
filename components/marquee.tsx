@@ -1,6 +1,6 @@
-import Marquee from "react-fast-marquee";
-import { button as buttonStyles } from "@nextui-org/theme";
-import { siteConfig } from "@/config/site";
+import Marquee from "react-fast-marquee"
+import { button as buttonStyles } from "@nextui-org/theme"
+import { siteConfig } from "@/config/site"
 
 export default function MarqueeComponent() {
   return (
@@ -13,5 +13,5 @@ export default function MarqueeComponent() {
         ))}
       </div>
     </Marquee>
-  );
+  )
 }
