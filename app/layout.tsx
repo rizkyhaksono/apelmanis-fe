@@ -36,11 +36,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col h-screen">
             <Navbar />
-            <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">{children}</main>
+            <main>{children}</main>
             <Analytics />
-            <footer className="w-full flex items-center justify-center py-3">
-              <Link isExternal className="flex items-center gap-1 text-current" href="https://github.com/rizkyhaksono" title="rizkyhaksono">
-                <p className="text-sm">Build by Rizky Haksono</p>
+            <footer className="w-full flex flex-col items-center justify-center py-6 mt-8">
+              <div className="section-divider w-full max-w-4xl mb-6" />
+              <Link isExternal className="flex items-center gap-2 text-current hover:text-primary transition-colors group" href="https://github.com/rizkyhaksono" title="rizkyhaksono">
+                <span className="text-sm font-medium">Built with ❤️ by</span>
+                <span className="text-sm font-semibold gradient-text group-hover:opacity-80 transition-opacity">Rizky Haksono</span>
               </Link>
             </footer>
           </div>
