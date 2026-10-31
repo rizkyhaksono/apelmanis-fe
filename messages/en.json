@@ -49,7 +49,16 @@
     "map_note": "The circle shows a 500 m radius around the house. Select a point to see the place name.",
     "open_maps": "Open in Google Maps",
     "cta_title": "Is there a room open?",
-    "cta_desc": "Message the owner to check open rooms, the monthly rent and a time to visit."
+    "cta_desc": "Message the owner to check open rooms, the monthly rent and a time to visit.",
+    "map_walk": "Walking distance",
+    "map_explore": "Places to visit",
+    "map_view": "Map view",
+    "explore_title": "Weekends in Madiun",
+    "explore_desc": "Parks, a mall, the town square and the train station, all under 15 minutes by motorbike. Pick a place to see it on the map.",
+    "from_kost": "{distance} from the house",
+    "route": "Get directions",
+    "map_note_explore": "Distances follow the road. Travel times are estimates by motorbike.",
+    "minutes": "{minutes} min"
   },
   "categories": {
     "campus": "Campus",
@@ -59,7 +68,12 @@
     "minimarket": "Minimarket",
     "atm": "ATM",
     "pharmacy": "Pharmacy",
-    "shopping": "Shopping"
+    "park": "Park",
+    "mall": "Mall",
+    "sport": "Sports",
+    "hospital": "Hospital",
+    "landmark": "City landmark",
+    "station": "Train station"
   },
   "gallery": {
     "open": "View photo: {caption}",

@@ -13,5 +13,16 @@ export const nearbyPlaces = [
   { name: "Alfamart", category: "minimarket", coords: [-7.6435, 111.54], distance: "250 m", minutes: 4, mode: "walk" },
   { name: "Rumah Makan Padang", category: "food", coords: [-7.64, 111.536], distance: "300 m", minutes: 4, mode: "walk" },
   { name: "Apotek Kimia Farma", category: "pharmacy", coords: [-7.6395, 111.535], distance: "400 m", minutes: 5, mode: "walk" },
-  { name: "Matahari Department Store", category: "shopping", coords: [-7.628, 111.523], distance: "2 km", minutes: 7, mode: "ride" },
 ] as const satisfies ReadonlyArray<{ name: string; category: string; coords: readonly [number, number]; distance: string; minutes: number; mode: "walk" | "ride" }>
+
+// Places worth a ride out. Coordinates from OpenStreetMap; km is road distance (OSRM), minutes assume ~25 km/h by motorbike.
+export const attractions = [
+  { name: "Ngrowo Bening Edu Park", category: "park", coords: [-7.637491, 111.529955], km: 1.6, minutes: 4 },
+  { name: "Sun City Mall", category: "mall", coords: [-7.622626, 111.53596], km: 2.7, minutes: 7 },
+  { name: "Stadion Wilis", category: "sport", coords: [-7.630988, 111.529639], km: 2.9, minutes: 7 },
+  { name: "RSUD Dr. Soedono", category: "hospital", coords: [-7.626634, 111.524493], km: 3.9, minutes: 10 },
+  { name: "Taman Bantaran Kali", category: "park", coords: [-7.629253, 111.513346], km: 4.3, minutes: 11 },
+  { name: "Pahlawan Street Center", category: "landmark", coords: [-7.625693, 111.520688], km: 4.6, minutes: 12 },
+  { name: "Alun-alun Madiun", category: "landmark", coords: [-7.629158, 111.516827], km: 4.6, minutes: 12 },
+  { name: "Stasiun Madiun", category: "station", coords: [-7.618593, 111.524858], km: 4.7, minutes: 12 },
+] as const satisfies ReadonlyArray<{ name: string; category: string; coords: readonly [number, number]; km: number; minutes: number }>

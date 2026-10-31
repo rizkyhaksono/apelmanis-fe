@@ -1,13 +1,16 @@
 "use client"
 
+import { useRef, useState } from "react"
 import NextLink from "next/link"
 import Image from "next/image"
 import dynamic from "next/dynamic"
-import { useTranslations } from "next-intl"
+import clsx from "clsx"
+import { useFormatter, useTranslations } from "next-intl"
 import PreviewFacilities from "@/components/preview-facilities"
 import { WhatsAppIcon } from "@/components/icons"
+import type { MapView } from "@/components/map-radius"
 import { whatsappLink, siteConfig } from "@/config/site"
-import { nearbyPlaces } from "@/contents/nearby"
+import { attractions, nearbyPlaces } from "@/contents/nearby"
 
 const LazyMap = dynamic(() => import("@/components/map-radius"), { ssr: false, loading: () => <div className="photo h-[22rem] w-full bg-paper md:h-[28rem]" /> })
 
@@ -20,7 +23,11 @@ const secondaryButton =
 export default function Home() {
   const t = useTranslations("home")
   const tCat = useTranslations("categories")
+  const format = useFormatter()
   const facts = t.raw("facts") as { title: string; note: string }[]
+  const [mapView, setMapView] = useState<MapView>("walk")
+  const [selected, setSelected] = useState<number | null>(null)
+  const mapRef = useRef<HTMLDivElement>(null)
 
   return (
     <>
@@ -102,13 +109,72 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-12 md:mt-16">
-          <LazyMap />
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
-            <p className="max-w-[40rem] text-sm text-moss">{t("map_note")}</p>
-            <a href={siteConfig.contact.mapsUrl} target="_blank" rel="noopener noreferrer" className={secondaryButton}>
-              {t("open_maps")}
-            </a>
+        <div className="mt-12 grid gap-10 md:mt-16 lg:grid-cols-12">
+          <div ref={mapRef} className="scroll-mt-20 lg:col-span-8">
+            <div role="group" aria-label={t("map_view")} className="mb-4 inline-flex rounded-full p-1 shadow-[inset_0_0_0_1px_var(--color-line)]">
+              {(["walk", "explore"] as const).map((view) => (
+                <button
+                  key={view}
+                  type="button"
+                  aria-pressed={mapView === view}
+                  onClick={() => {
+                    setMapView(view)
+                    setSelected(null)
+                  }}
+                  className={clsx("h-10 rounded-full px-4 text-sm font-medium transition-colors duration-200", mapView === view ? "bg-leaf text-paper" : "text-moss hover:text-leaf")}
+                >
+                  {t(view === "walk" ? "map_walk" : "map_explore")}
+                </button>
+              ))}
+            </div>
+            <LazyMap view={mapView} selected={selected} onSelect={setSelected} />
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
+              <p className="max-w-[40rem] text-sm text-moss">{t(mapView === "walk" ? "map_note" : "map_note_explore")}</p>
+              <a href={siteConfig.contact.mapsUrl} target="_blank" rel="noopener noreferrer" className={secondaryButton}>
+                {t("open_maps")}
+              </a>
+            </div>
+          </div>
+
+          <div className="lg:col-span-4">
+            <h3 className="reveal font-display text-h3">{t("explore_title")}</h3>
+            <p className="reveal mt-3 text-moss [--i:1]">{t("explore_desc")}</p>
+            <ol className="mt-6">
+              {attractions.map((place, i) => {
+                const isActive = mapView === "explore" && selected === i
+                return (
+                  <li key={place.name} className="rule-row">
+                    <button
+                      type="button"
+                      aria-pressed={isActive}
+                      onClick={() => {
+                        setMapView("explore")
+                        setSelected(i)
+                        mapRef.current?.scrollIntoView({ block: "nearest" })
+                      }}
+                      className="group grid w-full grid-cols-[1.75rem_1fr_auto] items-center gap-x-3 py-3 text-left"
+                    >
+                      <span
+                        className={clsx(
+                          "grid size-7 place-items-center rounded-full text-xs font-semibold tabular-nums transition-[background-color,color,box-shadow] duration-200",
+                          isActive ? "bg-leaf text-paper" : "text-leaf shadow-[inset_0_0_0_1.5px_var(--color-line)] group-hover:shadow-[inset_0_0_0_1.5px_var(--color-leaf)]"
+                        )}
+                      >
+                        {i + 1}
+                      </span>
+                      <span>
+                        {place.name}
+                        <span className="block text-sm text-moss">{tCat(place.category)}</span>
+                      </span>
+                      <span className="text-right text-sm tabular-nums text-moss">
+                        {format.number(place.km, { style: "unit", unit: "kilometer" })}
+                        <span className="block">{t("minutes", { minutes: place.minutes })}</span>
+                      </span>
+                    </button>
+                  </li>
+                )
+              })}
+            </ol>
           </div>
         </div>
       </section>
