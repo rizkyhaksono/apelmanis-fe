@@ -1,76 +1,138 @@
 {
   "nav": {
     "home": "Home",
-    "faq": "FAQ",
     "facilities": "Facilities",
-    "contact": "Contact"
+    "faq": "FAQ",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close_menu": "Close menu",
+    "language": "Language",
+    "whatsapp": "WhatsApp"
   },
   "home": {
-    "title": "Apel Manis",
-    "subtitle": "Kost",
-    "taglines": ["Best Women's Boarding House", "The Best!", "Comfortable", "Clean", "Near Campus", "Near Restaurants", "Near Shopping"],
-    "facilities_btn": "Facilities",
-    "contact_btn": "Contact",
-    "our_rooms": "Our Rooms",
-    "rooms_desc": "Comfort and cleanliness are our priorities. See our available room facilities.",
-    "nearby": "Close to Everywhere!",
-    "nearby_desc": "Strategic location, close to campus, restaurants, and shopping centers.",
-    "locations": "Locations",
-    "google_maps": "Google Maps",
-    "distance_map": "Distance to Important Places"
+    "title": "A quiet boarding house for women, 600 metres from UNIPMA.",
+    "lead": "Clean rooms with a private bathroom, Biznet WiFi and plenty of parking in Manisrejo, Madiun. Ask the owner about open rooms directly.",
+    "cta_whatsapp": "Ask about rooms on WhatsApp",
+    "cta_facilities": "See facilities",
+    "hero_alt": "Daylight falling through a breeze-block wall into a room",
+    "whatsapp_prefill": "Hello, I would like to ask about open rooms at Kost Apel Manis.",
+    "facts": [
+      {
+        "title": "Private bathroom",
+        "note": "Sitting toilet and sink"
+      },
+      {
+        "title": "Biznet WiFi",
+        "note": "Available in every room"
+      },
+      {
+        "title": "Plenty of parking",
+        "note": "Room for more than 10 motorbikes"
+      },
+      {
+        "title": "Mains water",
+        "note": "Clean piped water"
+      }
+    ],
+    "gallery_title": "Take a look inside",
+    "gallery_desc": "From the front gate to the bathroom. Select a photo to see it larger.",
+    "gallery_more": "All photos and facilities",
+    "tour": "Short tour",
+    "nearby_title": "Everything is close by",
+    "nearby_desc": "Campus, mosque, minimarkets and places to eat are all within walking distance.",
+    "col_place": "Place",
+    "col_category": "Category",
+    "col_distance": "Distance",
+    "col_time": "Time",
+    "walk": "{minutes} min walk",
+    "ride": "{minutes} min by motorbike",
+    "map_note": "The circle shows a 500 m radius around the house. Select a point to see the place name.",
+    "open_maps": "Open in Google Maps",
+    "cta_title": "Is there a room open?",
+    "cta_desc": "Message the owner to check open rooms, the monthly rent and a time to visit."
+  },
+  "categories": {
+    "campus": "Campus",
+    "school": "School",
+    "worship": "Mosque",
+    "food": "Food",
+    "minimarket": "Minimarket",
+    "atm": "ATM",
+    "pharmacy": "Pharmacy",
+    "shopping": "Shopping"
+  },
+  "gallery": {
+    "open": "View photo: {caption}",
+    "close": "Close",
+    "prev": "Previous photo",
+    "next": "Next photo",
+    "counter": "{current} of {total}",
+    "captions": {
+      "1": "Wooden staircase to the second floor",
+      "2": "Drying area on the second floor",
+      "3": "Sink inside the room",
+      "4": "Bed, desk and chair in a room",
+      "5": "Bathroom shower",
+      "6": "Ground-floor corridor",
+      "7": "Daylight through the breeze-block wall",
+      "8": "Drying rack on the second floor",
+      "9": "Stair hall from the ground floor",
+      "10": "Front of the house and gate",
+      "11": "Room with a tiled floor",
+      "12": "Corridor to the rooms",
+      "13": "Study desk and bed",
+      "14": "Room with high windows",
+      "15": "Wooden wardrobe",
+      "16": "Sink counter",
+      "17": "Bathroom door",
+      "18": "Private bathroom with a sitting toilet"
+    }
   },
   "contact": {
     "title": "Contact",
-    "description": "Contact us for more information about room availability and facilities.",
-    "email": "Email",
+    "description": "Contact the owner to check open rooms, the monthly rent and a time to visit.",
     "whatsapp": "WhatsApp",
-    "help_text": "Contact us anytime, we're ready to help you!",
-    "send_message": "Send Message",
+    "email": "Email",
+    "address": "Address",
+    "form_title": "Write a message",
     "name": "Name",
-    "name_placeholder": "Enter your name",
-    "email_placeholder": "Enter your email",
     "message": "Message",
-    "message_placeholder": "Write your message here..."
+    "message_placeholder": "Hello, I would like to ask about a room for next month.",
+    "submit": "Send on WhatsApp",
+    "form_note": "The message opens in WhatsApp. You can still edit it before sending.",
+    "prefill": "Hello, I am {name}. {message}"
   },
   "facilities": {
     "title": "Facilities",
-    "description": "Enjoy various complete facilities we provide for your comfort.",
-    "general": "General Facilities",
-    "general_desc": "Available in every room",
+    "description": "What you get in every room, and the house rules.",
+    "general": "In every room",
     "bathroom": "Bathroom",
-    "bathroom_desc": "Private bathroom facilities",
-    "rules": "Rules",
-    "rules_desc": "Please comply",
+    "rules": "House rules",
     "gallery": "Gallery",
-    "gallery_desc": "Click photo to view details."
+    "gallery_desc": "Select a photo to see it larger."
   },
   "faq": {
-    "title": "FAQ",
-    "description": "Frequently asked questions about Apel Manis Boarding House.",
-    "search": "Search questions...",
-    "no_results": "No questions match"
+    "title": "Common questions",
+    "description": "Short answers about the location, payment and facilities at Kost Apel Manis.",
+    "search": "Search questions",
+    "no_results": "No answer yet for “{query}”.",
+    "ask": "Ask directly on WhatsApp",
+    "ask_prefill": "Hello, I would like to ask about {query} at Kost Apel Manis."
   },
-  "common": {
-    "loading": "Loading...",
-    "back_home": "Back to Home",
-    "room": "Room",
-    "click_to_view": "Click to view",
-    "built_with": "Built with",
-    "by": "by"
+  "footer": {
+    "address": "Address",
+    "contact": "Contact",
+    "pages": "Pages",
+    "credit": "Built by"
   },
-  "nearby_places": {
-    "unipma": "PGRI Madiun University",
-    "sma3": "SMA Negeri 3 Madiun",
-    "matahari": "Matahari Dept. Store",
-    "restaurant": "Padang Restaurant",
-    "minimarket": "Indomaret & Alfamart",
-    "mosque": "Grand Mosque Madiun"
+  "error": {
+    "title": "This page did not load",
+    "description": "Try reloading. If it still fails, contact us on WhatsApp.",
+    "retry": "Reload"
   },
-  "themes": {
-    "light": "Light",
-    "dark": "Dark",
-    "blue": "Blue",
-    "purple": "Purple",
-    "green": "Green"
+  "not_found": {
+    "title": "This page does not exist",
+    "description": "The address may have a typo, or the page has moved.",
+    "back": "Go to the home page"
   }
 }

@@ -1,495 +1,307 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* ================================
-   Custom Properties / Design Tokens
-   ================================ */
-:root {
-  --gradient-primary: linear-gradient(135deg, #5ea2ef 0%, #0072f5 100%);
-  --gradient-secondary: linear-gradient(135deg, #ff705b 0%, #ffb457 100%);
-  --gradient-accent: linear-gradient(135deg, #ff1cf7 0%, #b249f8 100%);
-  --gradient-success: linear-gradient(135deg, #6fee8d 0%, #17c964 100%);
+/* Palette taken from the apple: flesh, skin and leaf. */
+@theme {
+  --color-flesh: #eef0e6;
+  --color-paper: #f8f9f3;
+  --color-leaf: #1f2b22;
+  --color-moss: #5b675c;
+  --color-skin: #a3253a;
+  --color-line: #d2d8ca;
 
-  --glass-bg: rgba(255, 255, 255, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.2);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.6;
+  --text-lead: 1.25rem;
+  --text-lead--line-height: 1.5;
+  --text-h3: 1.5625rem;
+  --text-h3--line-height: 1.25;
+  --text-h2: clamp(1.9375rem, 3.6vw, 2.4375rem);
+  --text-h2--line-height: 1.15;
+  --text-h1: clamp(2.4375rem, 5vw, 3.0625rem);
+  --text-h1--line-height: 1.08;
+  --text-hero: clamp(2.75rem, 7vw, 4.75rem);
+  --text-hero--line-height: 1.02;
 
-  --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.dark {
-  --glass-bg: rgba(0, 0, 0, 0.2);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+@theme inline {
+  --font-display: var(--font-young-serif), Georgia, serif;
+  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
 }
 
-/* Blue Theme */
-.blue {
-  --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-  --glass-bg: rgba(59, 130, 246, 0.1);
-  --glass-border: rgba(59, 130, 246, 0.2);
-  color-scheme: dark;
-}
-
-.blue body {
-  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
-}
-
-/* Purple Theme */
-.purple {
-  --gradient-primary: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
-  --glass-bg: rgba(168, 85, 247, 0.1);
-  --glass-border: rgba(168, 85, 247, 0.2);
-  color-scheme: dark;
-}
-
-.purple body {
-  background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 100%);
-}
-
-/* Green Theme */
-.green {
-  --gradient-primary: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-  --glass-bg: rgba(34, 197, 94, 0.1);
-  --glass-border: rgba(34, 197, 94, 0.2);
-  color-scheme: dark;
-}
-
-.green body {
-  background: linear-gradient(135deg, #052e16 0%, #14532d 100%);
-}
-
-/* ================================
-   Base Styles
-   ================================ */
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-/* ================================
-   Keyframe Animations
-   ================================ */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  body {
+    background-color: var(--color-flesh);
+    color: var(--color-leaf);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-skin);
+    outline-offset: 3px;
+  }
+
+  /* Red ring is too faint on dark leaf surfaces (2:1); use paper there. */
+  .bg-leaf :focus-visible,
+  dialog :focus-visible {
+    outline-color: var(--color-paper);
+  }
+
+  ::selection {
+    background-color: var(--color-leaf);
+    color: var(--color-flesh);
   }
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Thin outline keeps light photos from melting into the page. */
+@utility photo {
+  border-radius: 4px;
+  outline: 1px solid rgb(31 43 34 / 0.08);
+  outline-offset: -1px;
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
+@utility link-grow {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-origin: content-box;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 400ms var(--ease-out-quint);
 
-@keyframes glow {
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgba(94, 162, 239, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(94, 162, 239, 0.6);
+  &:hover,
+  &:focus-visible,
+  &[aria-current="page"] {
+    background-size: 100% 1px;
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-@keyframes pulse-glow {
-  0%,
-  100% {
-    opacity: 0.4;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.05);
-  }
-}
-
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* ================================
-   Animation Utility Classes
-   ================================ */
-.animate-fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
-}
-
-.animate-slide-up {
-  animation: slideUp 0.8s ease-out forwards;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-glow {
-  animation: glow 2s ease-in-out infinite;
-}
-
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 4s ease-in-out infinite;
-}
-
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient-shift 4s ease infinite;
-}
-
-/* Animation Delays */
-.delay-100 {
-  animation-delay: 0.1s;
-}
-.delay-200 {
-  animation-delay: 0.2s;
-}
-.delay-300 {
-  animation-delay: 0.3s;
-}
-.delay-400 {
-  animation-delay: 0.4s;
-}
-.delay-500 {
-  animation-delay: 0.5s;
-}
-
-/* ================================
-   Glass Morphism Effects
-   ================================ */
-.glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
-}
-
-.glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
-  border-radius: 1rem;
-  transition: var(--transition-base);
-}
-
-.glass-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-/* ================================
-   Gradient Utilities
-   ================================ */
-.gradient-text {
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.gradient-bg-primary {
-  background: var(--gradient-primary);
-}
-
-.gradient-bg-secondary {
-  background: var(--gradient-secondary);
-}
-
-.gradient-bg-accent {
-  background: var(--gradient-accent);
-}
-
-.gradient-border {
+/* Hairline row divider; drawn in on scroll where supported. */
+@utility rule-row {
   position: relative;
-  background-clip: padding-box;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background-color: var(--color-line);
+    transform-origin: left;
+  }
 }
 
-.gradient-border::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: 2px;
-  border-radius: inherit;
-  background: var(--gradient-primary);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+/* Home gallery: native swipe strip by default, pinned horizontal scroll where supported. */
+.pin-gallery {
+  view-timeline: --gallery block;
 }
 
-/* ================================
-   Background Decorations
-   ================================ */
-.bg-gradient-radial {
-  background: radial-gradient(ellipse at center, rgba(94, 162, 239, 0.15) 0%, transparent 70%);
+.pin-gallery__track {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-inline: max(1rem, calc((100% - 75rem) / 2 + 1.5rem));
 }
 
-.hero-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
+.pin-gallery__track > * {
+  scroll-snap-align: center;
 }
 
-.hero-orb-1 {
-  width: 400px;
-  height: 400px;
-  background: rgba(94, 162, 239, 0.3);
-  top: -100px;
-  right: -100px;
-  animation: pulse-glow 8s ease-in-out infinite;
+/* Muted map tiles to sit on the flesh background. */
+.map-muted .leaflet-tile-pane {
+  filter: grayscale(1) sepia(0.2) hue-rotate(40deg) saturate(0.7) brightness(1.04) contrast(0.92);
 }
 
-.hero-orb-2 {
-  width: 300px;
-  height: 300px;
-  background: rgba(255, 112, 91, 0.2);
-  bottom: -50px;
-  left: -100px;
-  animation: pulse-glow 6s ease-in-out infinite;
-  animation-delay: 2s;
+.map-pin {
+  border-radius: 9999px;
+  border: 2px solid var(--color-paper);
+  background-color: var(--color-leaf);
+  box-shadow: 0 1px 3px rgb(31 43 34 / 0.35);
 }
 
-/* ================================
-   Card & Component Enhancements
-   ================================ */
-.card-hover {
-  transition: var(--transition-base);
+.map-pin--home {
+  background-color: var(--color-skin);
 }
 
-.card-hover:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
-
-.image-overlay {
-  position: relative;
+/* Lock page scroll behind the lightbox. */
+html:has(dialog[open]) {
   overflow: hidden;
 }
 
-.image-overlay::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 50%);
-  opacity: 0;
-  transition: var(--transition-base);
+/* One-finger drag is off on phones so the page still scrolls; keep zoom buttons tappable. */
+.leaflet-bar a {
+  width: 40px !important;
+  height: 40px !important;
+  line-height: 40px !important;
 }
 
-.image-overlay:hover::after {
-  opacity: 1;
+.leaflet-container {
+  font-family: var(--font-sans);
+  background-color: var(--color-flesh);
 }
 
-/* ================================
-   Button Enhancements
-   ================================ */
-.btn-glow {
-  position: relative;
-  overflow: hidden;
-  transition: var(--transition-base);
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
 }
 
-.btn-glow::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  background: var(--gradient-primary);
-  border-radius: inherit;
-  z-index: -1;
-  opacity: 0;
-  transition: var(--transition-base);
-  filter: blur(15px);
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 0.6em;
+  }
 }
 
-.btn-glow:hover::before {
-  opacity: 0.7;
+@keyframes unveil {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
 }
 
-.btn-glow:hover {
-  transform: translateY(-2px);
+@keyframes drift {
+  from {
+    translate: 0 -5%;
+  }
+  to {
+    translate: 0 5%;
+  }
 }
 
-/* ================================
-   Section Decorations
-   ================================ */
-.section-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(94, 162, 239, 0.3) 50%, transparent 100%);
-  margin: 3rem 0;
+@keyframes draw {
+  from {
+    scale: 0 1;
+  }
 }
 
-.section-title-decoration {
-  display: inline-block;
-  position: relative;
+@keyframes slide {
+  to {
+    translate: calc(-100% + 100cqw) 0;
+  }
 }
 
-.section-title-decoration::after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--gradient-primary);
-  border-radius: 2px;
+@keyframes header-fill {
+  from {
+    background-color: rgb(238 240 230 / 0);
+    box-shadow: 0 1px 0 rgb(210 216 202 / 0);
+  }
 }
 
-/* ================================
-   Custom Scrollbar
-   ================================ */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+@media (prefers-reduced-motion: no-preference) {
+  /* One orchestrated page-load sequence; --i staggers the pieces. */
+  .load-rise {
+    animation: rise 900ms var(--ease-out-quint) both;
+    animation-delay: calc(var(--i, 0) * 90ms + 120ms);
+  }
+
+  .load-unveil {
+    animation: unveil 1300ms var(--ease-out-quint) both;
+    animation-delay: 380ms;
+  }
+
+  @supports (interpolate-size: allow-keywords) {
+    :root {
+      interpolate-size: allow-keywords;
+    }
+
+    details::details-content {
+      height: 0;
+      overflow: clip;
+      transition:
+        height 380ms var(--ease-out-quint),
+        content-visibility 380ms allow-discrete;
+    }
+
+    details[open]::details-content {
+      height: auto;
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry calc(10% + var(--i, 0) * 6%) entry calc(70% + var(--i, 0) * 6%);
+    }
+
+    .reveal-photo {
+      animation: unveil linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+
+    .drift {
+      animation: drift linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+
+    .rule-row::before {
+      animation: draw linear both;
+      animation-timeline: view();
+      animation-range: entry 20% entry 100%;
+    }
+
+    .header-fill {
+      animation: header-fill linear both;
+      animation-timeline: scroll();
+      animation-range: 0 160px;
+    }
+
+    @media (min-width: 768px) {
+      .pin-gallery {
+        height: calc(var(--count, 10) * 38vh + 100svh);
+      }
+
+      .pin-gallery__sticky {
+        position: sticky;
+        top: 0;
+        height: 100svh;
+        overflow: clip; /* hidden would let focus scroll it sideways */
+        display: flex;
+        align-items: center;
+        container-type: inline-size;
+      }
+
+      .pin-gallery__track {
+        overflow: visible;
+        width: max-content;
+        flex-shrink: 0;
+        animation: slide linear both;
+        animation-timeline: --gallery;
+        animation-range: contain 0% contain 100%;
+      }
+    }
+  }
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
-}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #5ea2ef 0%, #0072f5 100%);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #4a8ad8 0%, #0062d4 100%);
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #4a8ad8 0%, #0052b3 100%);
-}
-
-/* ================================
-   Form Enhancements
-   ================================ */
-.input-glow:focus-within {
-  box-shadow: 0 0 0 3px rgba(94, 162, 239, 0.2);
-}
-
-/* ================================
-   Text Selection
-   ================================ */
-::selection {
-  background: rgba(94, 162, 239, 0.3);
-  color: inherit;
-}
-
-/* ================================
-   Navbar Glass Effect
-   ================================ */
-.navbar-glass {
-  background: rgba(255, 255, 255, 0.7) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.dark .navbar-glass {
-  background: rgba(0, 0, 0, 0.7) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* ================================
-   Link Hover Effects
-   ================================ */
-.link-underline {
-  position: relative;
-}
-
-.link-underline::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--gradient-primary);
-  transition: width 0.3s ease;
-}
-
-.link-underline:hover::after {
-  width: 100%;
-}
-
-/* ================================
-   Icon Enhancements
-   ================================ */
-.icon-gradient {
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.icon-float {
-  transition: var(--transition-base);
-}
-
-.icon-float:hover {
-  transform: translateY(-3px);
-}
-
-/* ================================
-   Loading States
-   ================================ */
-.skeleton {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-  border-radius: 0.5rem;
-}
-
-.dark .skeleton {
-  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
-  background-size: 200% 100%;
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }

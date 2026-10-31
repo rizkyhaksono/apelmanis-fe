@@ -1,13 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { NextUIProvider } from "@nextui-org/system"
-import { useRouter } from "next/navigation"
-import { ThemeProvider as NextThemesProvider } from "next-themes"
-import { ThemeProviderProps } from "next-themes/dist/types"
 import { NextIntlClientProvider } from "next-intl"
 
-// Import messages
 import idMessages from "@/messages/id.json"
 import enMessages from "@/messages/en.json"
 
@@ -18,34 +13,46 @@ const messages: Record<string, typeof idMessages> = {
 
 export interface ProvidersProps {
   children: React.ReactNode
-  themeProps?: ThemeProviderProps
 }
 
-export function Providers({ children, themeProps }: ProvidersProps) {
-  const router = useRouter()
-  const [locale, setLocale] = React.useState<string>("id")
+// Locale lives in localStorage; useSyncExternalStore keeps SSR on "id" and hydrates to the saved value.
+const listeners = new Set<() => void>()
 
-  // Load locale from localStorage on mount
+const readLocale = () => {
+  try {
+    return localStorage.getItem("locale") === "en" ? "en" : "id"
+  } catch {
+    return "id"
+  }
+}
+
+const subscribe = (callback: () => void) => {
+  listeners.add(callback)
+  window.addEventListener("storage", callback)
+  return () => {
+    listeners.delete(callback)
+    window.removeEventListener("storage", callback)
+  }
+}
+
+export function Providers({ children }: ProvidersProps) {
+  const locale = React.useSyncExternalStore(subscribe, readLocale, () => "id")
+
   React.useEffect(() => {
-    const savedLocale = localStorage.getItem("locale")
-    if (savedLocale && (savedLocale === "id" || savedLocale === "en")) {
-      setLocale(savedLocale)
-    }
-  }, [])
+    document.documentElement.lang = locale
+  }, [locale])
 
   const handleLocaleChange = React.useCallback((newLocale: string) => {
-    setLocale(newLocale)
-    localStorage.setItem("locale", newLocale)
+    try {
+      localStorage.setItem("locale", newLocale)
+    } catch {}
+    listeners.forEach((callback) => callback())
   }, [])
 
   return (
-    <NextUIProvider navigate={router.push}>
-      <NextThemesProvider {...themeProps} themes={["light", "dark", "blue", "purple", "green"]}>
-        <NextIntlClientProvider locale={locale} messages={messages[locale] || messages.id} onError={() => {}}>
-          <LocaleContext.Provider value={{ locale, setLocale: handleLocaleChange }}>{children}</LocaleContext.Provider>
-        </NextIntlClientProvider>
-      </NextThemesProvider>
-    </NextUIProvider>
+    <NextIntlClientProvider locale={locale} messages={messages[locale] || messages.id} timeZone="Asia/Jakarta" onError={() => {}}>
+      <LocaleContext.Provider value={{ locale, setLocale: handleLocaleChange }}>{children}</LocaleContext.Provider>
+    </NextIntlClientProvider>
   )
 }
 

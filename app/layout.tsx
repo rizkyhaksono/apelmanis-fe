@@ -1,12 +1,15 @@
 import "@/styles/globals.css"
-import { Metadata } from "next"
+import { Metadata, Viewport } from "next"
+import { ViewTransition } from "react"
+import { Analytics } from "@vercel/analytics/next"
+import clsx from "clsx"
 import { siteConfig } from "@/config/site"
-import { Analytics } from "@vercel/analytics/react"
-import { fontPoppins } from "@/config/fonts"
+import { fontDisplay, fontSans } from "@/config/fonts"
 import { Providers } from "./providers"
 import { Navbar } from "@/components/navbar"
-import { Link } from "@nextui-org/link"
-import clsx from "clsx"
+import { Footer } from "@/components/footer"
+
+const ogImage = "/assets/gambar-7.jpeg"
 
 export const metadata: Metadata = {
   title: {
@@ -22,6 +25,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     type: "website",
     locale: "id_ID",
@@ -29,20 +35,13 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: siteConfig.name,
-      },
-    ],
+    images: [{ url: ogImage, width: 1200, height: 1600, alt: siteConfig.name }],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: ["/og-image.png"],
+    images: [ogImage],
   },
   robots: {
     index: true,
@@ -55,41 +54,23 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-  },
 }
 
-export const viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },
+export const viewport: Viewport = {
+  themeColor: "#eef0e6",
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="id" suppressHydrationWarning>
-      <head />
-      <body className={clsx("min-h-screen bg-background font-sans antialiased", fontPoppins.variable)}>
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="relative flex flex-col h-screen">
-            <Navbar />
+    <html lang="id">
+      <body className={clsx("min-h-svh bg-flesh font-sans text-body text-leaf", fontDisplay.variable, fontSans.variable)}>
+        <Providers>
+          <Navbar />
+          <ViewTransition>
             <main>{children}</main>
-            <Analytics />
-            <footer className="w-full flex flex-col items-center justify-center py-6 mt-8">
-              <div className="section-divider w-full max-w-4xl mb-6" />
-              <Link isExternal className="flex items-center gap-2 text-current hover:text-primary transition-colors group" href="https://github.com/rizkyhaksono" title="rizkyhaksono">
-                <span className="text-sm font-medium">Built with ❤️ by</span>
-                <span className="text-sm font-semibold gradient-text group-hover:opacity-80 transition-opacity">Rizky Haksono</span>
-              </Link>
-            </footer>
-          </div>
+          </ViewTransition>
+          <Footer />
+          <Analytics />
         </Providers>
       </body>
     </html>
