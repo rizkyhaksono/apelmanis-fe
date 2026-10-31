@@ -1,191 +1,133 @@
 "use client"
 
-import { Link } from "@nextui-org/link"
-import { button as buttonStyles } from "@nextui-org/theme"
-import { subtitle, title } from "@/components/primitives"
-import { PhoneIcon } from "@/components/icons"
-import Typed from "typed.js"
-import { useEffect, useRef } from "react"
-import MarqueeComponent from "@/components/marquee"
-import PreviewFacilities from "@/components/preview-facilities"
+import NextLink from "next/link"
+import Image from "next/image"
 import dynamic from "next/dynamic"
-import { Card } from "@nextui-org/react"
-import { MapPin, Clock, GraduationCap, ShoppingBag, UtensilsCrossed, Store, Landmark } from "lucide-react"
 import { useTranslations } from "next-intl"
+import PreviewFacilities from "@/components/preview-facilities"
+import { WhatsAppIcon } from "@/components/icons"
+import { whatsappLink, siteConfig } from "@/config/site"
+import { nearbyPlaces } from "@/contents/nearby"
 
-const LazyMap = dynamic(() => import("@/components/map-radius"), { ssr: false, loading: () => <div className="h-[500px] w-full skeleton rounded-xl" /> })
+const LazyMap = dynamic(() => import("@/components/map-radius"), { ssr: false, loading: () => <div className="photo h-[22rem] w-full bg-paper md:h-[28rem]" /> })
 
-// Nearby locations for display
-const nearbyLocations = [
-  {
-    nameKey: "unipma",
-    distance: "600m",
-    duration: "2 menit",
-    icon: GraduationCap,
-    color: "from-blue-500 to-blue-600",
-  },
-  {
-    nameKey: "sma3",
-    distance: "800m",
-    duration: "3 menit",
-    icon: GraduationCap,
-    color: "from-indigo-500 to-indigo-600",
-  },
-  {
-    nameKey: "matahari",
-    distance: "1.5km",
-    duration: "5 menit",
-    icon: ShoppingBag,
-    color: "from-pink-500 to-pink-600",
-  },
-  {
-    nameKey: "restaurant",
-    distance: "300m",
-    duration: "1 menit",
-    icon: UtensilsCrossed,
-    color: "from-orange-500 to-orange-600",
-  },
-  {
-    nameKey: "minimarket",
-    distance: "200m",
-    duration: "1 menit",
-    icon: Store,
-    color: "from-green-500 to-green-600",
-  },
-  {
-    nameKey: "mosque",
-    distance: "2km",
-    duration: "7 menit",
-    icon: Landmark,
-    color: "from-teal-500 to-teal-600",
-  },
-]
+const container = "mx-auto max-w-[75rem] px-4 sm:px-6"
+const primaryButton =
+  "inline-flex h-12 items-center gap-2.5 rounded-full bg-skin px-6 font-medium text-paper transition-[scale,background-color] duration-200 hover:bg-skin/90 motion-safe:active:scale-[0.97]"
+const secondaryButton =
+  "inline-flex h-12 items-center rounded-full px-6 font-medium text-leaf shadow-[inset_0_0_0_1px_var(--color-line)] transition-[scale,box-shadow] duration-200 hover:shadow-[inset_0_0_0_1px_var(--color-leaf)] motion-safe:active:scale-[0.97]"
 
 export default function Home() {
-  const el = useRef(null)
   const t = useTranslations("home")
-  const tPlaces = useTranslations("nearby_places")
-
-  useEffect(() => {
-    if (el.current) {
-      const taglines = t.raw("taglines") as string[]
-      const typed = new Typed(el.current, {
-        loop: true,
-        strings: taglines,
-        typeSpeed: 90,
-      })
-
-      return () => {
-        typed.destroy()
-      }
-    }
-  }, [t])
+  const tCat = useTranslations("categories")
+  const facts = t.raw("facts") as { title: string; note: string }[]
 
   return (
-    <section className="relative flex flex-col items-center justify-center gap-4 py-8 md:py-10 px-4 overflow-hidden">
-      {/* Background Decoration */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="hero-orb hero-orb-1" />
-        <div className="hero-orb hero-orb-2" />
-      </div>
-
-      {/* Hero Section */}
-      <div className="relative z-10 inline-block max-w-xl text-center justify-center animate-fade-in">
-        <h1 className={title({ class: "text-4xl sm:text-5xl md:text-6xl" })}>{t("title")}&nbsp;</h1>
-        <h1 className={title({ color: "blue", class: "text-4xl sm:text-5xl md:text-6xl" })}>{t("subtitle")}&nbsp;</h1>
-        <div className="flex items-center justify-center text-center mt-6 min-h-[2rem]">
-          <h2 className="text-lg lg:text-2xl text-default-600 font-medium" ref={el} />
+    <>
+      {/* Hero */}
+      <section className={`${container} grid items-center gap-10 pb-16 pt-8 md:pb-20 md:pt-16 lg:grid-cols-12`}>
+        <div className="lg:col-span-6">
+          <h1 className="load-rise font-display text-hero">{t("title")}</h1>
+          <p className="load-rise mt-6 max-w-[34rem] text-lead text-moss [--i:2]">{t("lead")}</p>
+          <div className="load-rise mt-10 flex flex-wrap gap-3 [--i:3]">
+            <a href={whatsappLink(t("whatsapp_prefill"))} target="_blank" rel="noopener noreferrer" className={primaryButton}>
+              <WhatsAppIcon size={18} />
+              {t("cta_whatsapp")}
+            </a>
+            <NextLink href="/facilities" className={secondaryButton}>
+              {t("cta_facilities")}
+            </NextLink>
+          </div>
         </div>
-      </div>
+        <div className="load-unveil photo relative aspect-[3/4] max-h-[70svh] overflow-hidden lg:col-span-5 lg:col-start-8 lg:max-h-[78svh]">
+          <Image src="/assets/gambar-7.jpeg" alt={t("hero_alt")} fill priority sizes="(min-width: 1024px) 40vw, 100vw" className="drift scale-110 object-cover" />
+        </div>
+      </section>
 
-      {/* CTA Buttons */}
-      <div className="relative z-10 flex gap-4 mt-4 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-        <Link href={"/facilities"} className={`${buttonStyles({ color: "primary", radius: "full", variant: "shadow", size: "lg" })} btn-glow`}>
-          {t("facilities_btn")}
-        </Link>
-        <Link className={`${buttonStyles({ variant: "bordered", radius: "full", size: "lg" })} hover:border-primary hover:text-primary transition-colors`} href={"/contact"}>
-          <PhoneIcon size={20} />
-          {t("contact_btn")}
-        </Link>
-      </div>
+      {/* Facts */}
+      <section className={container}>
+        <ul className="grid grid-cols-2 border-t border-line lg:grid-cols-4">
+          {facts.map((fact) => (
+            <li key={fact.title} className="border-b border-line py-5 pr-4 even:border-l even:pl-4 lg:border-b-0 lg:border-l lg:py-6 lg:pl-6 lg:pr-6 lg:first:border-l-0 lg:first:pl-0">
+              <p className="font-display text-lead">{fact.title}</p>
+              <p className="mt-1 text-sm text-moss">{fact.note}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
 
-      {/* Marquee Section */}
-      <div className="relative z-10 w-full mt-12 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-        <MarqueeComponent />
-      </div>
-
-      {/* Preview Facilities Section */}
-      <div className="relative z-10 w-full my-12 animate-fade-in" style={{ animationDelay: "0.4s" }}>
-        <div className="text-center mb-8">
-          <h2 className={title({ color: "blue", size: "sm", class: "section-title-decoration" })}>{t("our_rooms")}</h2>
-          <p className="text-default-500 mt-6 max-w-2xl mx-auto">{t("rooms_desc")}</p>
+      {/* Gallery */}
+      <section className="mt-20 md:mt-32" aria-labelledby="gallery-title">
+        <div className={`${container} mb-10 flex flex-wrap items-end justify-between gap-6`}>
+          <div>
+            <h2 id="gallery-title" className="reveal font-display text-h1">
+              {t("gallery_title")}
+            </h2>
+            <p className="reveal mt-4 max-w-[34rem] text-moss [--i:1]">{t("gallery_desc")}</p>
+          </div>
+          <NextLink href="/facilities" className="link-grow py-2">
+            {t("gallery_more")}
+          </NextLink>
         </div>
         <PreviewFacilities />
-      </div>
+      </section>
 
-      {/* Section Divider */}
-      <div className="section-divider w-full" />
+      {/* Nearby */}
+      <section className={`${container} mt-20 md:mt-32`} aria-labelledby="nearby-title">
+        <div className="grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <h2 id="nearby-title" className="reveal font-display text-h1">
+              {t("nearby_title")}
+            </h2>
+            <p className="reveal mt-4 text-moss [--i:1]">{t("nearby_desc")}</p>
+          </div>
 
-      {/* Nearby Locations Section */}
-      <div className="relative z-10 w-full animate-fade-in" style={{ animationDelay: "0.5s" }}>
-        <div className="text-center mb-8">
-          <h2 className={`${title({ color: "blue" })} section-title-decoration`}>{t("nearby")}</h2>
-          <p className="text-default-500 mt-6 max-w-2xl mx-auto">{t("nearby_desc")}</p>
+          <div className="lg:col-span-8">
+            <div aria-hidden="true" className="hidden grid-cols-[2fr_1fr_5rem_9rem] gap-4 pb-3 text-sm text-moss md:grid">
+              <span>{t("col_place")}</span>
+              <span>{t("col_category")}</span>
+              <span className="text-right">{t("col_distance")}</span>
+              <span className="text-right">{t("col_time")}</span>
+            </div>
+            <ul>
+              {nearbyPlaces.map((place) => (
+                <li key={place.name} className="rule-row grid grid-cols-[1fr_auto] gap-x-4 gap-y-1 py-4 md:grid-cols-[2fr_1fr_5rem_9rem]">
+                  <span>{place.name}</span>
+                  <span className="col-start-1 row-start-2 text-sm text-moss md:col-start-auto md:row-start-auto md:text-body">{tCat(place.category)}</span>
+                  <span className="text-right tabular-nums">{place.distance}</span>
+                  <span className="text-right text-sm tabular-nums text-moss md:text-body">{t(place.mode, { minutes: place.minutes })}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        {/* Distance Cards Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
-          {nearbyLocations.map((location) => {
-            const IconComponent = location.icon
-            return (
-              <Card key={location.nameKey} className="glass-card p-4 text-center group hover:scale-105 transition-transform duration-300">
-                <div className={`mx-auto p-3 rounded-full bg-gradient-to-br ${location.color} text-white mb-3 w-fit group-hover:scale-110 transition-transform`}>
-                  <IconComponent size={24} />
-                </div>
-                <h3 className="text-sm font-semibold text-foreground mb-1 line-clamp-2">{tPlaces(location.nameKey)}</h3>
-                <div className="flex items-center justify-center gap-1 text-primary font-bold">
-                  <MapPin size={14} />
-                  <span>{location.distance}</span>
-                </div>
-                <div className="flex items-center justify-center gap-1 text-default-500 text-xs mt-1">
-                  <Clock size={12} />
-                  <span>{location.duration}</span>
-                </div>
-              </Card>
-            )
-          })}
-        </div>
-      </div>
-
-      {/* Section Divider */}
-      <div className="section-divider w-full" />
-
-      {/* Location Section */}
-      <div className="relative z-10 w-full text-center animate-fade-in" style={{ animationDelay: "0.7s" }}>
-        <h2 className={`${title({ color: "blue" })} section-title-decoration`}>{t("locations")}</h2>
-
-        {/* Google Maps */}
-        <div className="mt-12 glass-card p-4 md:p-6">
-          <h3 className={subtitle({ color: "blue", className: "font-semibold mb-4 w-full text-center" })}>📍 {t("google_maps")}</h3>
-          <iframe
-            title="Apel Manis Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.379296664746!2d111.53595727574817!3d-7.642297375596943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e79bfb6d777b62f%3A0xe568a382b1b226f4!2sKos%20Putra%20Apel%20Manis!5e0!3m2!1sen!2sid!4v1705385260979!5m2!1sen!2sid"
-            width="100%"
-            height="450"
-            style={{ border: 0, borderRadius: 16 }}
-            allowFullScreen={true}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="shadow-xl"
-          />
-        </div>
-
-        {/* Distance Map */}
-        <div className="mt-12 glass-card p-4 md:p-6">
-          <h3 className={subtitle({ color: "blue", className: "font-semibold mb-4 w-full text-center" })}>🗺️ {t("distance_map")}</h3>
+        <div className="mt-12 md:mt-16">
           <LazyMap />
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
+            <p className="max-w-[40rem] text-sm text-moss">{t("map_note")}</p>
+            <a href={siteConfig.contact.mapsUrl} target="_blank" rel="noopener noreferrer" className={secondaryButton}>
+              {t("open_maps")}
+            </a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Closing call to action */}
+      <section className="-mb-20 mt-20 bg-leaf text-paper md:-mb-32 md:mt-32">
+        <div className={`${container} grid gap-8 py-16 md:grid-cols-12 md:items-end md:py-24`}>
+          <div className="md:col-span-7">
+            <h2 className="reveal font-display text-h1">{t("cta_title")}</h2>
+            <p className="reveal mt-4 max-w-[34rem] text-paper/80 [--i:1]">{t("cta_desc")}</p>
+          </div>
+          <div className="md:col-span-5 md:justify-self-end">
+            <a href={whatsappLink(t("whatsapp_prefill"))} target="_blank" rel="noopener noreferrer" className={primaryButton}>
+              <WhatsAppIcon size={18} />
+              {t("cta_whatsapp")}
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
   )
 }

@@ -1,77 +1,78 @@
 "use client"
 
-import React from "react"
-import { title } from "@/components/primitives"
-import { Card, CardHeader, CardBody, Divider, Input, Textarea, Button } from "@nextui-org/react"
-import { Mail, Phone, MessageCircle } from "lucide-react"
+import { useTranslations } from "next-intl"
+import { WhatsAppIcon } from "@/components/icons"
+import { siteConfig, whatsappLink } from "@/config/site"
+
+const field =
+  "mt-2 w-full rounded-lg bg-paper px-4 shadow-[inset_0_0_0_1px_var(--color-line)] transition-shadow duration-200 placeholder:text-moss/80 focus:shadow-[inset_0_0_0_1px_var(--color-leaf)] focus:outline-none focus-visible:outline-2 focus-visible:outline-skin"
 
 export default function ContactPage() {
+  const t = useTranslations("contact")
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const data = new FormData(e.currentTarget)
+    const text = t("prefill", { name: String(data.get("name")).trim(), message: String(data.get("message")).trim() })
+    window.open(whatsappLink(text), "_blank", "noopener,noreferrer")
+  }
+
   return (
-    <section className="max-w-2xl mx-auto py-8 px-4">
-      {/* Page Header */}
-      <div className="text-center mb-10">
-        <h1 className={`${title({ color: "blue" })} section-title-decoration`}>Contact</h1>
-        <p className="text-default-500 mt-6">Hubungi kami untuk informasi lebih lanjut tentang ketersediaan kamar dan fasilitas.</p>
+    <div className="mx-auto grid max-w-[75rem] gap-12 px-4 pt-10 sm:px-6 md:pt-16 lg:grid-cols-12 lg:gap-16">
+      <div className="lg:col-span-5">
+        <h1 className="load-rise font-display text-h1">{t("title")}</h1>
+        <p className="load-rise mt-4 text-lead text-moss [--i:1]">{t("description")}</p>
+
+        <dl className="load-rise mt-12 [--i:2]">
+          <div className="rule-row py-4">
+            <dt className="text-sm text-moss">{t("whatsapp")}</dt>
+            <dd className="mt-1">
+              <a className="link-grow" href={whatsappLink()} target="_blank" rel="noopener noreferrer">
+                {siteConfig.contact.phoneDisplay}
+              </a>
+            </dd>
+          </div>
+          <div className="rule-row py-4">
+            <dt className="text-sm text-moss">{t("email")}</dt>
+            <dd className="mt-1">
+              <a className="link-grow" href={`mailto:${siteConfig.contact.email}`}>
+                {siteConfig.contact.email}
+              </a>
+            </dd>
+          </div>
+          <div className="rule-row py-4">
+            <dt className="text-sm text-moss">{t("address")}</dt>
+            <dd className="mt-1">
+              <a className="link-grow" href={siteConfig.contact.mapsUrl} target="_blank" rel="noopener noreferrer">
+                {siteConfig.contact.address}
+              </a>
+            </dd>
+          </div>
+        </dl>
       </div>
 
-      {/* Contact Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-        {/* Email Card */}
-        <a
-          href="mailto:mrizkyhaksono@gmail.com"
-          target="_blank"
-          className="flex items-center gap-4 p-4 rounded-xl bg-default-50 dark:bg-default-100/10 border border-default-200 dark:border-default-100/20 hover:border-primary/50 transition-all group"
+      <form onSubmit={onSubmit} className="load-rise self-start rounded-[12px] bg-paper/60 p-6 shadow-[inset_0_0_0_1px_var(--color-line)] [--i:3] sm:p-8 lg:col-span-6 lg:col-start-7">
+        <h2 className="font-display text-h3">{t("form_title")}</h2>
+
+        <label className="mt-6 block">
+          <span className="text-sm">{t("name")}</span>
+          <input name="name" required autoComplete="name" className={`${field} h-12`} />
+        </label>
+
+        <label className="mt-5 block">
+          <span className="text-sm">{t("message")}</span>
+          <textarea name="message" required rows={5} placeholder={t("message_placeholder")} className={`${field} resize-y py-3`} />
+        </label>
+
+        <button
+          type="submit"
+          className="mt-6 inline-flex h-12 items-center gap-2.5 rounded-full bg-skin px-6 font-medium text-paper transition-[scale,background-color] duration-200 hover:bg-skin/90 motion-safe:active:scale-[0.97]"
         >
-          <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg group-hover:scale-110 transition-transform">
-            <Mail size={22} />
-          </div>
-          <div>
-            <p className="font-semibold text-foreground group-hover:text-primary transition-colors">Email</p>
-            <p className="text-sm text-default-500">mrizkyhaksono@gmail.com</p>
-          </div>
-        </a>
-
-        {/* WhatsApp Card */}
-        <a
-          href="https://wa.me/6281337283023"
-          target="_blank"
-          className="flex items-center gap-4 p-4 rounded-xl bg-default-50 dark:bg-default-100/10 border border-default-200 dark:border-default-100/20 hover:border-success/50 transition-all group"
-        >
-          <div className="p-3 rounded-xl bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg group-hover:scale-110 transition-transform">
-            <Phone size={22} />
-          </div>
-          <div>
-            <p className="font-semibold text-foreground group-hover:text-success transition-colors">WhatsApp</p>
-            <p className="text-sm text-default-500">081337283023</p>
-          </div>
-        </a>
-      </div>
-
-      {/* Help Text */}
-      <div className="flex items-center gap-2 text-default-500 text-sm mb-6">
-        <MessageCircle size={16} />
-        <p>Hubungi kami kapan saja, kami siap membantu Anda!</p>
-      </div>
-
-      {/* Contact Form */}
-      <Card className="bg-default-50 dark:bg-default-100/10 border border-default-200 dark:border-default-100/20 shadow-lg">
-        <CardHeader className="pb-0">
-          <h2 className="text-lg font-semibold text-foreground">Kirim Pesan</h2>
-        </CardHeader>
-        <Divider className="my-3" />
-        <CardBody className="gap-4">
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Input type="text" label="Name" placeholder="Masukkan nama Anda" variant="bordered" size="sm" />
-            <Input type="email" label="Email" placeholder="Masukkan email Anda" variant="bordered" size="sm" />
-          </div>
-
-          <Textarea label="Pesan" placeholder="Tulis pesan Anda di sini..." variant="bordered" minRows={3} size="sm" />
-
-          <Button color="primary" className="font-semibold" size="md">
-            Kirim Pesan
-          </Button>
-        </CardBody>
-      </Card>
-    </section>
+          <WhatsAppIcon size={18} />
+          {t("submit")}
+        </button>
+        <p className="mt-3 text-sm text-moss">{t("form_note")}</p>
+      </form>
+    </div>
   )
 }

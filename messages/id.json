@@ -1,76 +1,138 @@
 {
   "nav": {
     "home": "Beranda",
-    "faq": "FAQ",
     "facilities": "Fasilitas",
-    "contact": "Kontak"
+    "faq": "FAQ",
+    "contact": "Kontak",
+    "menu": "Menu",
+    "close_menu": "Tutup menu",
+    "language": "Bahasa",
+    "whatsapp": "WhatsApp"
   },
   "home": {
-    "title": "Apel Manis",
-    "subtitle": "Kost",
-    "taglines": ["Pilihan Kost Putri", "Terbaik!", "Nyaman", "Bersih", "Dekat Kampus", "Dekat Tempat Makan", "Dekat Tempat Belanja"],
-    "facilities_btn": "Fasilitas",
-    "contact_btn": "Kontak",
-    "our_rooms": "Kamar Kami",
-    "rooms_desc": "Kenyamanan dan kebersihan adalah prioritas kami. Lihat fasilitas kamar yang tersedia.",
-    "nearby": "Dekat Kemana-mana!",
-    "nearby_desc": "Lokasi strategis, dekat dengan kampus, tempat makan, dan pusat perbelanjaan.",
-    "locations": "Lokasi",
-    "google_maps": "Google Maps",
-    "distance_map": "Jarak ke Lokasi Penting"
+    "title": "Kost putri yang tenang, 600 meter dari UNIPMA.",
+    "lead": "Kamar bersih dengan kamar mandi dalam, WiFi Biznet, dan parkir luas di Manisrejo, Madiun. Tanyakan kamar kosong langsung ke pemilik.",
+    "cta_whatsapp": "Tanya kamar lewat WhatsApp",
+    "cta_facilities": "Lihat fasilitas",
+    "hero_alt": "Cahaya siang masuk lewat dinding roster ke dalam kamar",
+    "whatsapp_prefill": "Halo, saya ingin tanya kamar kosong di Kost Apel Manis.",
+    "facts": [
+      {
+        "title": "Kamar mandi dalam",
+        "note": "Kloset duduk dan wastafel"
+      },
+      {
+        "title": "WiFi Biznet",
+        "note": "Tersedia di setiap kamar"
+      },
+      {
+        "title": "Parkir luas",
+        "note": "Muat lebih dari 10 motor"
+      },
+      {
+        "title": "Air PAM",
+        "note": "Sumber air bersih"
+      }
+    ],
+    "gallery_title": "Lihat ke dalam",
+    "gallery_desc": "Dari pagar depan sampai kamar mandi. Pilih foto untuk melihat lebih besar.",
+    "gallery_more": "Semua foto dan fasilitas",
+    "tour": "Tur singkat",
+    "nearby_title": "Semua dekat dari kost",
+    "nearby_desc": "Kampus, masjid, minimarket, dan tempat makan bisa dicapai jalan kaki.",
+    "col_place": "Tempat",
+    "col_category": "Kategori",
+    "col_distance": "Jarak",
+    "col_time": "Waktu",
+    "walk": "{minutes} menit jalan kaki",
+    "ride": "{minutes} menit naik motor",
+    "map_note": "Lingkaran menunjukkan radius 500 m dari kost. Pilih titik untuk melihat nama tempat.",
+    "open_maps": "Buka di Google Maps",
+    "cta_title": "Masih ada kamar kosong?",
+    "cta_desc": "Kirim pesan ke pemilik untuk cek kamar kosong, harga sewa, dan jadwal lihat kamar."
+  },
+  "categories": {
+    "campus": "Kampus",
+    "school": "Sekolah",
+    "worship": "Masjid",
+    "food": "Tempat makan",
+    "minimarket": "Minimarket",
+    "atm": "ATM",
+    "pharmacy": "Apotek",
+    "shopping": "Belanja"
+  },
+  "gallery": {
+    "open": "Lihat foto: {caption}",
+    "close": "Tutup",
+    "prev": "Foto sebelumnya",
+    "next": "Foto berikutnya",
+    "counter": "{current} dari {total}",
+    "captions": {
+      "1": "Tangga kayu ke lantai dua",
+      "2": "Area jemur di lantai dua",
+      "3": "Wastafel di dalam kamar",
+      "4": "Kasur, meja, dan kursi di kamar",
+      "5": "Shower di kamar mandi",
+      "6": "Lorong kamar lantai satu",
+      "7": "Cahaya siang lewat dinding roster",
+      "8": "Rak jemur di lantai dua",
+      "9": "Ruang tangga dari lantai satu",
+      "10": "Tampak depan dan pagar",
+      "11": "Kamar dengan lantai keramik",
+      "12": "Lorong menuju kamar",
+      "13": "Meja belajar dan kasur",
+      "14": "Kamar dengan jendela tinggi",
+      "15": "Lemari pakaian kayu",
+      "16": "Meja wastafel",
+      "17": "Pintu kamar mandi",
+      "18": "Kamar mandi dalam dengan kloset duduk"
+    }
   },
   "contact": {
     "title": "Kontak",
-    "description": "Hubungi kami untuk informasi lebih lanjut tentang ketersediaan kamar dan fasilitas.",
-    "email": "Email",
+    "description": "Hubungi pemilik untuk cek kamar kosong, harga sewa, dan jadwal lihat kamar.",
     "whatsapp": "WhatsApp",
-    "help_text": "Hubungi kami kapan saja, kami siap membantu Anda!",
-    "send_message": "Kirim Pesan",
+    "email": "Email",
+    "address": "Alamat",
+    "form_title": "Tulis pesan",
     "name": "Nama",
-    "name_placeholder": "Masukkan nama Anda",
-    "email_placeholder": "Masukkan email Anda",
     "message": "Pesan",
-    "message_placeholder": "Tulis pesan Anda di sini..."
+    "message_placeholder": "Halo, saya ingin tanya kamar kosong untuk bulan depan.",
+    "submit": "Kirim lewat WhatsApp",
+    "form_note": "Pesan dibuka di WhatsApp. Kamu masih bisa mengubahnya sebelum dikirim.",
+    "prefill": "Halo, saya {name}. {message}"
   },
   "facilities": {
     "title": "Fasilitas",
-    "description": "Nikmati berbagai fasilitas lengkap yang kami sediakan untuk kenyamanan Anda.",
-    "general": "Fasilitas Umum",
-    "general_desc": "Tersedia di setiap kamar",
-    "bathroom": "Kamar Mandi",
-    "bathroom_desc": "Fasilitas kamar mandi dalam",
+    "description": "Yang kamu dapat di setiap kamar, dan aturan yang berlaku di kost.",
+    "general": "Di setiap kamar",
+    "bathroom": "Kamar mandi",
     "rules": "Peraturan",
-    "rules_desc": "Harap dipatuhi",
     "gallery": "Galeri",
-    "gallery_desc": "Klik foto untuk melihat lebih detail."
+    "gallery_desc": "Pilih foto untuk melihat lebih besar."
   },
   "faq": {
-    "title": "FAQ",
-    "description": "Pertanyaan yang sering diajukan seputar Kost Apel Manis.",
-    "search": "Cari pertanyaan...",
-    "no_results": "Tidak ada pertanyaan yang cocok dengan"
+    "title": "Pertanyaan umum",
+    "description": "Jawaban singkat seputar lokasi, pembayaran, dan fasilitas Kost Apel Manis.",
+    "search": "Cari pertanyaan",
+    "no_results": "Belum ada jawaban untuk “{query}”.",
+    "ask": "Tanya langsung lewat WhatsApp",
+    "ask_prefill": "Halo, saya mau tanya soal {query} di Kost Apel Manis."
   },
-  "common": {
-    "loading": "Memuat...",
-    "back_home": "Kembali ke Beranda",
-    "room": "Kamar",
-    "click_to_view": "Klik untuk melihat",
-    "built_with": "Dibuat dengan",
-    "by": "oleh"
+  "footer": {
+    "address": "Alamat",
+    "contact": "Kontak",
+    "pages": "Halaman",
+    "credit": "Dibuat oleh"
   },
-  "nearby_places": {
-    "unipma": "Universitas PGRI Madiun",
-    "sma3": "SMA Negeri 3 Madiun",
-    "matahari": "Matahari Dept. Store",
-    "restaurant": "Rumah Makan Padang",
-    "minimarket": "Indomaret & Alfamart",
-    "mosque": "Masjid Agung Madiun"
+  "error": {
+    "title": "Halaman gagal dimuat",
+    "description": "Coba muat ulang. Kalau masih gagal, hubungi kami lewat WhatsApp.",
+    "retry": "Muat ulang"
   },
-  "themes": {
-    "light": "Terang",
-    "dark": "Gelap",
-    "blue": "Biru",
-    "purple": "Ungu",
-    "green": "Hijau"
+  "not_found": {
+    "title": "Halaman ini tidak ada",
+    "description": "Alamatnya mungkin salah ketik, atau halamannya sudah dipindah.",
+    "back": "Ke beranda"
   }
 }

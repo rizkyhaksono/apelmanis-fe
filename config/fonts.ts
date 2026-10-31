@@ -1,17 +1,12 @@
-import { Fira_Code as FontMono, Inter as FontSans, Poppins as FontPoppins } from "next/font/google"
+import { Hanken_Grotesk, Young_Serif } from "next/font/google"
 
-export const fontSans = FontSans({
+export const fontDisplay = Young_Serif({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: "400",
+  variable: "--font-young-serif",
 })
 
-export const fontMono = FontMono({
+export const fontSans = Hanken_Grotesk({
   subsets: ["latin"],
-  variable: "--font-mono",
-})
-
-export const fontPoppins = FontPoppins({
-  subsets: ["latin"],
-  variable: "--font-poppins",
-  weight: "800"
+  variable: "--font-hanken",
 })

@@ -1,31 +1,22 @@
-import { Button } from "@nextui-org/button"
-import { title } from "@/components/primitives"
-import NotFoundComponent from "@/components/404"
-import Link from "next/link"
-import { Home } from "lucide-react"
+"use client"
+
+import NextLink from "next/link"
+import { useTranslations } from "next-intl"
 
 export default function NotFound() {
+  const t = useTranslations("not_found")
+
   return (
-    <section className="relative min-h-[60vh] flex items-center justify-center">
-      {/* Background Decoration */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="hero-orb hero-orb-1 opacity-30" />
-        <div className="hero-orb hero-orb-2 opacity-20" />
-      </div>
-
-      <div className="relative z-10 items-center flex flex-col justify-center text-center animate-fade-in">
-        <h1 className={`${title({ color: "blue" })} mb-4`}>404</h1>
-        <p className="text-xl text-default-500 mb-2">Page Not Found</p>
-        <p className="text-default-400 mb-8 max-w-md">Halaman yang Anda cari tidak ditemukan. Mungkin halaman telah dipindahkan atau dihapus.</p>
-
-        <NotFoundComponent />
-
-        <Link href={"/"}>
-          <Button className="mt-8 btn-glow font-semibold" color="primary" size="lg" startContent={<Home size={18} />}>
-            Kembali ke Beranda
-          </Button>
-        </Link>
-      </div>
+    <section className="mx-auto max-w-[75rem] px-4 py-24 sm:px-6">
+      <p className="load-rise font-display text-[clamp(6rem,20vw,12rem)] leading-none tabular-nums text-line">404</p>
+      <h1 className="load-rise mt-6 font-display text-h1 [--i:1]">{t("title")}</h1>
+      <p className="load-rise mt-4 max-w-[34rem] text-moss [--i:2]">{t("description")}</p>
+      <NextLink
+        href="/"
+        className="load-rise mt-8 inline-flex h-12 items-center rounded-full bg-leaf px-6 font-medium text-paper transition-[scale] duration-200 [--i:3] motion-safe:active:scale-[0.97]"
+      >
+        {t("back")}
+      </NextLink>
     </section>
   )
 }
