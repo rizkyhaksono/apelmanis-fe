@@ -49,7 +49,16 @@
     "map_note": "Lingkaran menunjukkan radius 500 m dari kost. Pilih titik untuk melihat nama tempat.",
     "open_maps": "Buka di Google Maps",
     "cta_title": "Masih ada kamar kosong?",
-    "cta_desc": "Kirim pesan ke pemilik untuk cek kamar kosong, harga sewa, dan jadwal lihat kamar."
+    "cta_desc": "Kirim pesan ke pemilik untuk cek kamar kosong, harga sewa, dan jadwal lihat kamar.",
+    "map_walk": "Jalan kaki",
+    "map_explore": "Tempat menarik",
+    "map_view": "Tampilan peta",
+    "explore_title": "Akhir pekan di Madiun",
+    "explore_desc": "Taman, mal, alun-alun, sampai stasiun kereta, semuanya kurang dari 15 menit naik motor. Pilih tempat untuk melihatnya di peta.",
+    "from_kost": "{distance} dari kost",
+    "route": "Lihat rute",
+    "map_note_explore": "Jarak dihitung lewat jalan raya. Waktu tempuh perkiraan naik motor.",
+    "minutes": "{minutes} menit"
   },
   "categories": {
     "campus": "Kampus",
@@ -59,7 +68,12 @@
     "minimarket": "Minimarket",
     "atm": "ATM",
     "pharmacy": "Apotek",
-    "shopping": "Belanja"
+    "park": "Taman",
+    "mall": "Mal",
+    "sport": "Olahraga",
+    "hospital": "Rumah sakit",
+    "landmark": "Ikon kota",
+    "station": "Stasiun kereta"
   },
   "gallery": {
     "open": "Lihat foto: {caption}",

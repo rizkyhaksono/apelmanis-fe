@@ -139,6 +139,57 @@
   background-color: var(--color-skin);
 }
 
+/* Leaflet's own CSS loads after this file, so these rules lean on .map-muted for specificity.
+   --font-sans is inlined by @theme, so the next/font variable is used directly. */
+.map-muted .map-num {
+  display: grid;
+  place-items: center;
+  border-radius: 9999px;
+  background-color: var(--color-paper);
+  color: var(--color-leaf);
+  font: 600 12px/1 var(--font-hanken), sans-serif;
+  font-variant-numeric: tabular-nums;
+  box-shadow:
+    inset 0 0 0 1.5px var(--color-leaf),
+    0 1px 3px rgb(31 43 34 / 0.3);
+}
+
+.map-muted .map-num--active {
+  background-color: var(--color-leaf);
+  color: var(--color-paper);
+}
+
+.map-muted .map-label {
+  padding: 2px 8px;
+  border: 0;
+  border-radius: 9999px;
+  background-color: var(--color-paper);
+  color: var(--color-leaf);
+  font: 500 12px/1.5 var(--font-hanken), sans-serif;
+  box-shadow: 0 1px 3px rgb(31 43 34 / 0.25);
+}
+
+.map-muted .map-label::before {
+  display: none;
+}
+
+.map-muted .leaflet-popup-content-wrapper {
+  border-radius: 6px;
+  color: var(--color-leaf);
+  box-shadow: 0 4px 16px rgb(31 43 34 / 0.18);
+}
+
+.map-muted .leaflet-popup-content {
+  margin: 12px 16px;
+  font: 14px/1.5 var(--font-hanken), sans-serif;
+}
+
+.map-muted .leaflet-popup-content a {
+  color: var(--color-skin);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* Lock page scroll behind the lightbox. */
 html:has(dialog[open]) {
   overflow: hidden;
@@ -151,8 +202,8 @@ html:has(dialog[open]) {
   line-height: 40px !important;
 }
 
-.leaflet-container {
-  font-family: var(--font-sans);
+.map-muted.leaflet-container {
+  font-family: var(--font-hanken), sans-serif;
   background-color: var(--color-flesh);
 }
 
